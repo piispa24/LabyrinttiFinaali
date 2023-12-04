@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuScripts : MonoBehaviour
+public class MenuScripts : BulletCollision
 {
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class MenuScripts : MonoBehaviour
 
     public void StartBtnClicked()
     {
-        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("SampleScene");
+        ResetKills();
     }
 
     public void InfoBtnClicked()

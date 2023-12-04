@@ -60,6 +60,12 @@ public class BulletCollision : MonoBehaviour
         }
     }
 
+    public void ResetKills()
+    {
+        // Add any other reset logic you need
+        kill = 0;
+        UpdateKillsText();
+    }
     //Tuhoamis ‰‰ni
     private void DestroyNoise(Vector3 soundPosition)
     {

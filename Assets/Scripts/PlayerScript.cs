@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     private int zombiesSpawned = 0; // Counter for the number of zombies spawned
     public TMP_Text spawnFasterText; // Reference to the UI Text component
     private Animator textAnimator; // Reference to Animator component
-    private Animator animator; // Reference to Animator component
+    //private Animator animator; // Reference to Animator component
 
 
     //PIISPA
@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
         {
             shoot = true; // If so, sets ammunta to true and fires
             ShootingNoise(transform.position);
-            RecylAnimation();
+            //RecylAnimation();
         }
 
         if (Time.time - zombieLastSpawnTime >= zombieSpawnInterval) // Checks if enough time has passed since the last zombie was spawned, based on the zombieSpawnInterval variable
@@ -143,18 +143,18 @@ public class PlayerScript : MonoBehaviour
         player.transform.position = spawnPosition; // Move the existing player capsule to the new spawn position
     }
 
-    public void RecylAnimation()
-    {
-        animator = GetComponent<Animator>();
+    //public void RecylAnimation()
+    //{
+    //    animator = GetComponent<Animator>();
 
-        if (animator != null)
-        {
-            Debug.Log("Playing Recyl animation");
-            animator.Play("Recyl");
-        }
-        else
-        {
-            Debug.LogWarning("Animator component not found.");
-        }
-    }
+    //    if (animator != null)
+    //    {
+    //        Debug.Log("Playing Recyl animation");
+    //        animator.Play("Recyl");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Animator component not found.");
+    //    }
+    //}
 }

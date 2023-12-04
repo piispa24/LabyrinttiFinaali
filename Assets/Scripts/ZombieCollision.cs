@@ -19,7 +19,7 @@ public class ZombieCollision : MonoBehaviour
             // Set the flag to true to indicate that the scene has been loaded
             hasLoadedEndScene = true;
 
-            // Load the EndScene only once
+            // Load the EndScene 
             SceneManager.LoadScene("EndScene");
         }
     }
