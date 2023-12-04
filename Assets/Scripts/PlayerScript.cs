@@ -32,12 +32,6 @@ public class PlayerScript : MonoBehaviour
         textAnimator.SetTrigger("SlideDown"); // Trigger the animation
     }
 
-    public void RecylAnimation()
-    {
-        animator = GetComponent<Animator>();
-        animator.Play("Recyl"); // Play the animation
-    }
-
 
     private void Awake() // Called before Start() to initialize variables
     {
@@ -60,12 +54,12 @@ public class PlayerScript : MonoBehaviour
         {
             shoot = true; // If so, sets ammunta to true and fires
             ShootingNoise(transform.position);
-           
+            RecylAnimation();
         }
 
         if (Time.time - zombieLastSpawnTime >= zombieSpawnInterval) // Checks if enough time has passed since the last zombie was spawned, based on the zombieSpawnInterval variable
         {
-            RecylAnimation();
+            
             spawnZombie(); // If enough time has passed, a zombie is spawned using SpawnZombie() method
             zombieLastSpawnTime = Time.time; // Set the zombieLastSpawnTime to the current time
         }
@@ -149,4 +143,18 @@ public class PlayerScript : MonoBehaviour
         player.transform.position = spawnPosition; // Move the existing player capsule to the new spawn position
     }
 
+    public void RecylAnimation()
+    {
+        animator = GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            Debug.Log("Playing Recyl animation");
+            animator.Play("Recyl");
+        }
+        else
+        {
+            Debug.LogWarning("Animator component not found.");
+        }
+    }
 }

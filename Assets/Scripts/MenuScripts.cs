@@ -19,6 +19,7 @@ public class MenuScripts : MonoBehaviour
 
     public void StartBtnClicked()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("SampleScene");
     }
 
