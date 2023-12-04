@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class PlayerScript : MonoBehaviour
     private float zombieLastSpawnTime; // Last spawn for zombies
     private int zombiesSpawned = 0; // Counter for the number of zombies spawned
     public TMP_Text spawnFasterText; // Reference to the UI Text component
-    public Animator textAnimator; // Reference to Animator component
+    private Animator textAnimator; // Reference to Animator component
+    private Animator animator; // Reference to Animator component
+
 
     //PIISPA
     public AudioClip shootingSound;  // Audio kun ammutaan
@@ -29,10 +32,17 @@ public class PlayerScript : MonoBehaviour
         textAnimator.SetTrigger("SlideDown"); // Trigger the animation
     }
 
+    public void RecylAnimation()
+    {
+        animator = GetComponent<Animator>();
+        animator.Play("Recyl"); // Play the animation
+    }
+
 
     private void Awake() // Called before Start() to initialize variables
     {
         rb = GetComponent<Rigidbody>();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -50,10 +60,12 @@ public class PlayerScript : MonoBehaviour
         {
             shoot = true; // If so, sets ammunta to true and fires
             ShootingNoise(transform.position);
+           
         }
 
         if (Time.time - zombieLastSpawnTime >= zombieSpawnInterval) // Checks if enough time has passed since the last zombie was spawned, based on the zombieSpawnInterval variable
         {
+            RecylAnimation();
             spawnZombie(); // If enough time has passed, a zombie is spawned using SpawnZombie() method
             zombieLastSpawnTime = Time.time; // Set the zombieLastSpawnTime to the current time
         }
