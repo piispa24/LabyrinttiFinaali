@@ -6,48 +6,29 @@ using TMPro;
 
 public class ZombieCollision : MonoBehaviour
 {
-    //public GameObject loppuPaneeli;
-    //public GameObject pistePaneeli;
+    private bool hasLoadedEndScene = false; // Flag to track if the scene has been loaded
 
-    public AudioClip endSound;  // Audio kun zombi osuu
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioClip endSound;
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "EndGame") // If bullet collision target tag is "enemy", destroy the gameObject and the enemy
+        if (!hasLoadedEndScene && collision.gameObject.tag == "EndGame")
         {
             EndNoise(transform.position);
-            SceneManager.LoadScene("EndScene");
-            EndNoise(transform.position);
-            //GameEnd();
 
+            // Set the flag to true to indicate that the scene has been loaded
+            hasLoadedEndScene = true;
+
+            // Load the EndScene only once
+            SceneManager.LoadScene("EndScene");
         }
     }
 
     private void EndNoise(Vector3 soundPosition)
     {
-        //‰‰ni kun zombi osuu
         if (endSound != null)
         {
             AudioSource.PlayClipAtPoint(endSound, soundPosition);
         }
     }
-
-    //public void GameEnd()
-    //{
-    //    loppuPaneeli.GetComponent<Animator>().Play("EndAnimo");
-    //    loppuPaneeli.SetActive(true);
-    //    //pistePaneeli.GetComponent<Animator>().Play("PointAnim");
-    //    //pistePaneeli.SetActive(true);
-    //}
 }
