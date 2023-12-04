@@ -32,4 +32,9 @@ public class MenuScripts : BulletCollision
     {
         SceneManager.LoadScene("MenuScene");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
