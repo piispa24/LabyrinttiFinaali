@@ -56,7 +56,7 @@ public class BulletCollision : MonoBehaviour
     {
         if (allKills != null)
         {
-            allKills.text = "Zombie: " + kill.ToString();
+            allKills.text = "Zombies: " + kill.ToString();
         }
     }
 

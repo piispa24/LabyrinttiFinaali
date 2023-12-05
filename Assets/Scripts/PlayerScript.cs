@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     private int zombiesSpawned = 0; // Counter for the number of zombies spawned
     public TMP_Text spawnFasterText; // Reference to the UI Text component
     private Animator textAnimator; // Reference to Animator component
+    public float minSpawnDistanceFromPlayer = 10f;
     //private Animator animator; // Reference to Animator component
 
 
@@ -103,8 +104,14 @@ public class PlayerScript : MonoBehaviour
 
         float yPosition = planeTransform.position.y + 0.5f; // Y-position is slightly above the plane to prevent spawning inside it
 
-        Vector3 spawnPosition = new Vector3(randomXposition, yPosition, randomZposition) + planeTransform.position;
-        Instantiate(shootingTarget, spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(randomXposition, yPosition, randomZposition) + planeTransform.position; // Creates a Vector3 for the spawn position using X Y Z values
+
+        if (Vector3.Distance(player.transform.position, spawnPosition) < minSpawnDistanceFromPlayer) // If the spawn position is too close to the player
+        {
+            return; // Skip spawning the zombie
+        }
+
+        Instantiate(shootingTarget, spawnPosition, Quaternion.identity); // Creates an instance of the spawn object
 
         zombiesSpawned++; // Increment the zombie counter
 
@@ -118,13 +125,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //ammunta ääni
-    private void ShootingNoise(Vector3 soundPosition)
+    private void ShootingNoise(Vector3 soundPosition) // Method to play a shooting sound effect
     {
-        //ääni kun on ammutaan
-        if (shootingSound != null)
+        if (shootingSound != null) // Check if the AudioClip is assigned
         {
-            AudioSource.PlayClipAtPoint(shootingSound, soundPosition); //positio missä ääni tulee, eli ammunta kohdassa
+            AudioSource.PlayClipAtPoint(shootingSound, soundPosition); // Play the shooting sound at the specified position in the game
         }
     }
 

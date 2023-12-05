@@ -59,7 +59,7 @@ public class ColliderCheck : MonoBehaviour
     {
         if (allpoints != null)
         {
-            allpoints.text = "Sack: " + points.ToString();
+            allpoints.text = "Money bags: " + points.ToString();
         }
     }
 
