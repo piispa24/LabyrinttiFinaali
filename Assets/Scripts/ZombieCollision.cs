@@ -6,25 +6,21 @@ using TMPro;
 
 public class ZombieCollision : MonoBehaviour
 {
-    private bool hasLoadedEndScene = false; // Flag to track if the scene has been loaded
+    private bool hasLoadedEndScene = false; //tarkistaa onko scene ladattu
 
     public AudioClip endSound;
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!hasLoadedEndScene && collision.gameObject.tag == "EndGame")
+        if (!hasLoadedEndScene && collision.gameObject.tag == "EndGame") //tarkistaa onko scene ladattu ja tagiin torm‰tty
         {
-            EndNoise(transform.position);
-
-            // Set the flag to true to indicate that the scene has been loaded
-            hasLoadedEndScene = true;
-
-            // Load the EndScene 
-            SceneManager.LoadScene("EndScene");
+            EndNoise(transform.position); //‰‰nite
+            hasLoadedEndScene = true; // Asettaa latauksen todeksi
+            SceneManager.LoadScene("EndScene"); // Lataa scene
         }
     }
 
-    private void EndNoise(Vector3 soundPosition)
+    private void EndNoise(Vector3 soundPosition) //‰‰nite kun peli loppuu
     {
         if (endSound != null)
         {
