@@ -30,12 +30,12 @@ public class ColliderCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("collectible"))
+        if (other.gameObject.CompareTag("collectible"))  //tarkistaa tagin
         {
-            other.gameObject.SetActive(false);
-            CollectibleSoundPick(transform.position);
-            AddPoint();
-            UpdatePointsText();
+            other.gameObject.SetActive(false);  //kun pelaaja osuu s‰kkiin piilottaa sne
+            CollectibleSoundPick(transform.position); //‰‰ni
+            AddPoint();  //lis‰‰ pisteen
+            UpdatePointsText(); //p‰ivitt‰‰ pisteen
         }
         
     }
