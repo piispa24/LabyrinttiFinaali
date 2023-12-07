@@ -56,7 +56,7 @@ public class RotatorForCollectible : MonoBehaviour
 
         else
         {
-            Debug.LogWarning("Väärä paikka");
+            Debug.LogWarning("Väärä paikka");  //debuggausta
         }
     }
 
@@ -72,7 +72,7 @@ public class RotatorForCollectible : MonoBehaviour
             return hit.position;
         }
 
-        // Return a default position if a valid position is not found
+        // palaa peruspaikkaan jos ei löydy
         return Vector3.zero;
     }
 
