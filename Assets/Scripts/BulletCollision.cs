@@ -31,18 +31,18 @@ public class BulletCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy")  //hakee tˆrm‰yksen tagiin
         {
-            collision.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            DestroyNoise(transform.position);
-            AddKill();
-            UpdateKillsText();
+            collision.gameObject.SetActive(false);  //asettaa bulletin piiloonm
+            gameObject.SetActive(false);  //asettaa vihollisen piiloon
+            DestroyNoise(transform.position);  //‰‰ni tuhoamisesta
+            AddKill();  //lis‰‰ pisteen
+            UpdateKillsText(); //p‰ivitt‰‰ pisteen
         }
 
-        if (collision.gameObject.tag == "wall")
+        if (collision.gameObject.tag == "wall")  //piilottaa bulletin kun osuu sein‰‰n
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);  
         }
     }
     //laskuri tapoille
@@ -51,7 +51,8 @@ public class BulletCollision : MonoBehaviour
         kill += 1;
         Debug.Log("Kill count: " + kill.ToString());
     }
-
+    
+    //p‰ivitt‰‰ ja printtaa tappolaskurin
     public void UpdateKillsText()
     {
         if (allKills != null)
@@ -62,7 +63,6 @@ public class BulletCollision : MonoBehaviour
 
     public void ResetKills()
     {
-        // Add any other reset logic you need
         kill = 0;
         UpdateKillsText();
     }

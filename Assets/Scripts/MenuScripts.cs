@@ -20,7 +20,7 @@ public class MenuScripts : BulletCollision
     public void StartBtnClicked()
     {
         SceneManager.LoadScene("SampleScene");
-        ResetKills();
+        ResetKills();  //asettaa zombie tappolaskurin nollaksi
     }
 
     public void InfoBtnClicked()

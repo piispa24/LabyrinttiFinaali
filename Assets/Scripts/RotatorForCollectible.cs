@@ -11,19 +11,19 @@ public class RotatorForCollectible : MonoBehaviour
 
     private void Start()
     {
-        navMeshSurface = FindObjectOfType<NavMeshSurface>();
+        navMeshSurface = FindObjectOfType<NavMeshSurface>(); //etsii navmeshin
 
-        if (navMeshSurface == null)
+        if (navMeshSurface == null) //tarkastaa että navmesh löytyy
         {
-            Debug.LogError("NavMeshSurface not found in the scene. Make sure you have a NavMeshSurface component in your scene.");
+            Debug.LogError("NavMeshSurface not found in the scene.");
         }
 
-        StartCoroutine(CloneCollectibleRoutine());
+        StartCoroutine(CloneCollectibleRoutine()); //aloittaa säkkien kloonauksen navmesh alueelle
     }
 
     void Update()
     {
-        transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime);  //säkkien liike koodi
 
     }
 
@@ -32,15 +32,15 @@ public class RotatorForCollectible : MonoBehaviour
         while (true)
         {
             Kloonaus();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f); //kloona 2 sekunnin välein
         }
     }
 
-    private void Kloonaus()
+    private void Kloonaus() //Kloonaus koodi
     {
         if (navMeshSurface == null)
         {
-            Debug.LogError("NavMeshSurface not set. Make sure to assign the NavMeshSurface component in the Inspector.");
+            Debug.LogError("NavMeshSurface not set.");
             return;
         }
 

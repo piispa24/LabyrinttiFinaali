@@ -11,17 +11,16 @@ public class EndScene : MonoBehaviour
 
     void Start()
     {
-        // Call the Points method when the scene starts
         Points();
     }
 
     public void Points()
     {
         
-            // Access the points variable through an instance of ColliderCheck
+            // hakee pisteet s‰keist‰ ja tapoista
             int totalPoints = ColliderCheck.points + BulletCollision.kill;
 
-            // Display the points
+            // N‰ytt‰‰ pisteet lopussa
             SacksText.text = "Sacks: " + ColliderCheck.points.ToString();
             ZombieText.text = "Zombie: " + BulletCollision.kill.ToString(); 
             totalPointsText.text = "Total: " + totalPoints.ToString();
